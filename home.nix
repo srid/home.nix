@@ -19,6 +19,13 @@
       enable = true;
       userName = "Sridhar Ratnakumar";
       userEmail = "srid@srid.ca";
+      aliases = {
+        s = "status";
+        ci = "commit";
+      };
+      extraConfig = {
+        pull.rebase = "false";
+      };
     };
     bash = {
       enable = true;
