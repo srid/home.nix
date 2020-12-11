@@ -9,6 +9,43 @@
   home.username = "srid";
   home.homeDirectory = "/home/srid";
 
+  home.packages = with pkgs; [
+    tig
+    nnn
+  ];
+
+  programs = {
+    git = {
+      enable = true;
+      userName = "Sridhar Ratnakumar";
+      userEmail = "srid@srid.ca";
+    };
+    bash = {
+      enable = true;
+      shellAliases = {
+        g = "git";
+        t = "tig";
+        l = "ls --color=always";
+      };
+      # Without this, none of the Nix stuff will be on PATH.
+      initExtra = ''
+        if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+          . ~/.nix-profile/etc/profile.d/nix.sh;
+          export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
+        fi # added by Nix installer
+        '';
+    };
+    bat.enable = true;
+    autojump.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    tmux = {
+      enable = true;
+      # Force tmux to use /tmp for sockets (WSL2 compat)
+      secureSocket = false;
+    };
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
