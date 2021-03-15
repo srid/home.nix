@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
-{
+let 
+  nix-thunk = 
+    (import (builtins.fetchTarball "https://github.com/obsidiansystems/nix-thunk/archive/master.tar.gz") {}).command;
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -12,6 +15,7 @@
   home.packages = with pkgs; [
     cachix
     tig
+    nix-thunk
   ];
 
   programs = {
@@ -59,6 +63,17 @@
         bind - split-window -v -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
       '';
+    };
+
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = true;
+
+      plugins = with pkgs.vimPlugins; [
+        vim-nix
+      ];
     };
 
     bash = {
