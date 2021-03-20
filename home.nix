@@ -98,6 +98,13 @@ in {
       enable = true;
     };
 
+    password-store = {
+      enable = true;
+      settings = {
+        PASSWORD_STORE_DIR = "/mnt/c/Users/srid/Documents/password-store/";
+      };
+    };
+
     bat.enable = true;
     autojump.enable = true;
     fzf.enable = true;
