@@ -14,9 +14,9 @@ in {
 
   home.packages = with pkgs; [
     cachix
-    tig
-    dotnet-sdk_5
-    nix-thunk
+    # tig
+    # dotnet-sdk_5
+    # nix-thunk
   ];
 
   programs = {
@@ -70,7 +70,7 @@ in {
       enable = true;
       viAlias = true;
       vimAlias = true;
-      withNodeJs = true;
+      # withNodeJs = true;
 
       plugins = with pkgs.vimPlugins; [
         vim-nix
