@@ -91,18 +91,14 @@ in {
           export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
         fi # added by Nix installer
         . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+        # Add dotnet tools to PATH
+        export PATH=~/.dotnet/tools/:$PATH
         '';
     };
 
     starship = {
       enable = true;
-    };
-
-    password-store = {
-      enable = true;
-      settings = {
-        PASSWORD_STORE_DIR = "/mnt/c/Users/srid/Documents/password-store/";
-      };
     };
 
     bat.enable = true;
