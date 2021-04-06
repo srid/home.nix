@@ -94,6 +94,10 @@ in {
 
         # Add dotnet tools to PATH
         export PATH=~/.dotnet/tools/:$PATH
+
+        # Rust 
+        export PATH=/home/srid/.cargo/bin:$PATH
+        source $HOME/.cargo/env
         '';
     };
 
